@@ -1,5 +1,5 @@
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import entity_platform
+from homeassistant.helpers.entity_platform import async_get_platforms
 from homeassistant.components.switch import SwitchEntity
 
 class FluffelshaButton(SwitchEntity):
@@ -33,7 +33,9 @@ class FluffelshaButton(SwitchEntity):
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Initialisiere die Entitäten ohne Konfigurationsfluss."""
-    # Hier fügen wir die Entität in die Plattform für Switches ein
-    platform = await entity_platform.async_get_platform(hass, "switch")
-    platform.async_add_entities([FluffelshaButton()])
+    # Hole die Switch-Plattform und füge die Entität hinzu
+    platforms = await async_get_platforms(hass, "switch")
+    platform = platforms[0] if platforms else None  # Wir nehmen die erste Plattform
+    if platform:
+        platform.async_add_entities([FluffelshaButton()])
     return True
