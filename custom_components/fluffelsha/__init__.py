@@ -1,22 +1,26 @@
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import async_get_platforms
 from homeassistant.components.switch import SwitchEntity
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import Entity
 
 class FluffelshaButton(SwitchEntity):
+    """Schalt-Entität, die als Button fungiert."""
+    
     def __init__(self):
         self._state = False  # Der Standardstatus des Buttons ist 'aus'
 
     @property
     def name(self):
-        return "FluffelsHA Button"  # Name des Buttons
+        """Name des Buttons."""
+        return "FluffelsHA Button"
 
     @property
     def is_on(self):
-        return self._state  # Zeigt den Status des Buttons
+        """Zeigt den Status des Buttons."""
+        return self._state
 
     def turn_on(self, **kwargs):
         """Wenn der Button gedrückt wird, sende eine Benachrichtigung."""
-        self._state = True  # Button wird gedrückt (aktiviert)
+        self._state = True
         self.send_notification()
         self.async_write_ha_state()  # Aktualisiert den Zustand der Entität
 
@@ -31,11 +35,9 @@ class FluffelshaButton(SwitchEntity):
             "message": "Der FluffelsHA Button wurde gedrückt!"
         })
 
+
 async def async_setup(hass: HomeAssistant, config: dict):
     """Initialisiere die Entitäten ohne Konfigurationsfluss."""
-    # Hole die Switch-Plattform und füge die Entität hinzu
-    platforms = await async_get_platforms(hass, "switch")
-    platform = platforms[0] if platforms else None  # Wir nehmen die erste Plattform
-    if platform:
-        platform.async_add_entities([FluffelshaButton()])
+    # Entität direkt ohne Plattform registrieren
+    hass.helpers.entity_platform.async_add_entities([FluffelshaButton()])
     return True
