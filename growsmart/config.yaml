@@ -1,0 +1,8 @@
+name: "Mein Add-on"
+version: "1.0"
+slug: "growsmart"
+description: "Growsmart"
+startup: application
+boot: auto
+options: {}
+schema: {}
