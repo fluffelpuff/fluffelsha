@@ -1,0 +1,8 @@
+name: "Mein Add-on"
+version: "1.0"
+slug: "mein_addon"
+description: "Ein Add-on für Home Assistant, das eine Sensor-Entität bereitstellt."
+startup: application
+boot: auto
+options: {}
+schema: {}
