@@ -1,6 +1,6 @@
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 class FluffelshaButton(SwitchEntity):
     """Schalt-Entität, die als Button fungiert."""
@@ -31,14 +31,11 @@ class FluffelshaButton(SwitchEntity):
 
     def send_notification(self):
         """Sende eine Benachrichtigung an alle mobilen Geräte."""
-        self.hass.services.async_call("notify", "mobile_app", {
+        self.hass.services.call("notify", "mobile_app", {
             "message": "Der FluffelsHA Button wurde gedrückt!"
         })
 
 
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
-
-async def async_setup(hass, config):
-    """Set up the Fluffelsha component."""
-    platform = hass.data["entity_platform"]
-    platform.async_add_entities([FluffelshaButton()])
+async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
+    """Set up the Fluffelsha platform."""
+    async_add_entities([FluffelshaButton()])
