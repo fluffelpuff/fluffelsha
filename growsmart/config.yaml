@@ -2,6 +2,12 @@ name: "Fluffels - Growsmart"
 version: "1.0"
 slug: "growsmart"
 description: "Ein Add-on, das einen Button bereitstellt."
+arch:
+  - amd64
+  - armv7
+  - armhf
+  - aarch64
+  - i386
 startup: application
 boot: auto
 options: {}
