@@ -1,0 +1,12 @@
+{
+    "domain": "fluffelsha",
+    "name": "FluffelsHA",
+    "version": "1.0",
+    "documentation": "https://github.com/fluffelpuff/fluffelsha/wiki",
+    "dependencies": [],
+    "requirements": [],
+    "iot_class": "cloud_polling",
+    "config_flow": true,
+    "codeowners": ["@fluffelpuff"]
+  }
+  

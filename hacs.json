@@ -1,0 +1,8 @@
+{
+  "name": "FluffelsHA",
+  "repository": "fluffelpuff/fluffelsha",
+  "documentation": "https://github.com/fluffelpuff/fluffelsha/wiki",
+  "issues": "https://github.com/fluffelpuff/fluffelsha/issues",
+  "homeassistant": "2022.4.0",
+  "dependencies": []
+}
