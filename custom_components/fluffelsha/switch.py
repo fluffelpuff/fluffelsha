@@ -1,8 +1,6 @@
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import Entity
 
-# Schalt-Entität, die als Button fungiert
 class FluffelshaButton(SwitchEntity):
     def __init__(self):
         self._state = False  # Der Standardstatus des Buttons ist 'aus'
@@ -32,7 +30,10 @@ class FluffelshaButton(SwitchEntity):
             "message": "Der FluffelsHA Button wurde gedrückt!"
         })
 
-# Die Entität wird in Home Assistant registriert
-async def async_setup_entry(hass: HomeAssistant, entry, async_add_entities):
-    """Setze den Button in Home Assistant."""
-    async_add_entities([FluffelshaButton()])
+async def async_setup(hass: HomeAssistant, config: dict):
+    """Initialisiere die Entitäten ohne Konfigurationsfluss."""
+    # Die korrekte Methode zur Registrierung der Entitäten verwenden
+    from homeassistant.helpers.entity_platform import async_get_platform
+    platform = await async_get_platform(hass, "switch")
+    platform.async_add_entities([FluffelshaButton()])
+    return True
