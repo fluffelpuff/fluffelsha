@@ -1,7 +1,7 @@
-name: "Mein Add-on"
+name: "Fluffelsha Test Button"
 version: "1.0"
-slug: "growsmart"
-description: "Growsmart"
+slug: "fluffelsha_button"
+description: "Ein Add-on, das einen Button bereitstellt."
 startup: application
 boot: auto
 options: {}
