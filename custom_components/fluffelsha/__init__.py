@@ -36,8 +36,9 @@ class FluffelshaButton(SwitchEntity):
         })
 
 
-async def async_setup(hass: HomeAssistant, config: dict):
-    """Initialisiere die Entitäten ohne Konfigurationsfluss."""
-    # Entität direkt ohne Plattform registrieren
-    hass.helpers.entity_platform.async_add_entities([FluffelshaButton()])
-    return True
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
+async def async_setup(hass, config):
+    """Set up the Fluffelsha component."""
+    platform = hass.data["entity_platform"]
+    platform.async_add_entities([FluffelshaButton()])
